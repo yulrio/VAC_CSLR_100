@@ -115,7 +115,7 @@ class Processor():
                 device_ids=self.device.gpu_list,
                 output_device=self.device.output_device)
         model = convert_model(model)
-        model.cuda()
+        # model.cuda()
         return model
 
     def load_model_weights(self, model, weight_path):
