@@ -115,12 +115,12 @@ class Processor():
                 device_ids=self.device.gpu_list,
                 output_device=self.device.output_device)
         model = convert_model(model)
-        # model.cuda()
+        model.cuda()
         return model
 
     def load_model_weights(self, model, weight_path):
-        # state_dict = torch.load(weight_path)
-        state_dict = torch.load(weight_path, map_location=torch.device('cpu'))
+        state_dict = torch.load(weight_path)
+        # state_dict = torch.load(weight_path, map_location=torch.device('cpu'))
         if len(self.arg.ignore_weights):
             for w in self.arg.ignore_weights:
                 if state_dict.pop(w, None) is not None:
